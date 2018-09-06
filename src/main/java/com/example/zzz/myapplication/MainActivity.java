@@ -74,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
         mBtnTest = findViewById(R.id.btn_test);
         btn1=findViewById(R.id.button1);
 
-        /*btn1.setOnClickListener(new View.OnClickListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,Main2Activity.class);
                 MainActivity.this.startActivity(intent);
             }
-        });*/
+        });
 
 
         //1.初始化控件
