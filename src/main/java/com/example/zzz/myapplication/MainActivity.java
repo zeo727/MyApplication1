@@ -1,6 +1,7 @@
 package com.example.zzz.myapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private Button mBtnTest;
     private Button btn1;
+    private Button btn2;
     private TextView t1;
     private AutoCompleteTextView acTextView;
     //3.初始化一个数据源---这数据源去匹配文本框输入的内容
@@ -27,37 +29,37 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.i("TAG","MainActivity-->onStart");
+        Log.i("TAG", "MainActivity-->onStart");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i("TAG","MainActivity-->onStop");
+        Log.i("TAG", "MainActivity-->onStop");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("TAG","MainActivity-->onResume");
+        Log.i("TAG", "MainActivity-->onResume");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.i("TAG","MainActivity-->onRestart");
+        Log.i("TAG", "MainActivity-->onRestart");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i("TAG","MainActivity-->onPause");
+        Log.i("TAG", "MainActivity-->onPause");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.i("TAG","MainActivity-->onDestroy");
+        Log.i("TAG", "MainActivity-->onDestroy");
     }
 
     @Override
@@ -66,21 +68,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.i("TAG","MainActivity-->onCreate");
+        Log.i("TAG", "MainActivity-->onCreate");
 
 
         macTextView = findViewById(R.id.multiAutoCompleteTextView);
         t1 = findViewById(R.id.textView3);
         mBtnTest = findViewById(R.id.btn_test);
-        btn1=findViewById(R.id.button1);
-
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,Main2Activity.class);
-                MainActivity.this.startActivity(intent);
-            }
-        });
+        btn1 = findViewById(R.id.button1);
+        btn2 = findViewById(R.id.button2);
 
 
         //1.初始化控件
@@ -102,8 +97,21 @@ public class MainActivity extends AppCompatActivity {
         t1.setText(Html.fromHtml(s1));
         t1.setMovementMethod(LinkMovementMethod.getInstance());
 
-
-
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("tel:10086");
+                Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+                startActivity(intent);
+            }
+        });
         /*
          * 1.匿名内部类实现点击事件
          */
